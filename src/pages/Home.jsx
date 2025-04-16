@@ -18,15 +18,30 @@ export default function Home() {
     <>
       <h1>Home page</h1>
 
-      {movies.length > 0 ? (
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>{movie.title}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>No movies available.</p>
-      )}
+      <section className="movies">
+        <div className="container">
+          <div className="row">
+
+            {movies.length > 0 ? (
+
+              
+                movies.map((movie) => (
+                  <div key={movie.id} className="col">
+                    <div className="card">
+                      <img src={movie.image} alt={movie.title} />
+                      <h3>{movie.title}</h3>
+                      <p>{movie.release_year}</p>
+                    </div>
+                  </div>
+                ))
+              
+            ) : (
+              <p>No movies available.</p>
+            )}
+
+          </div>
+        </div>
+      </section >
     </>
   )
 }
