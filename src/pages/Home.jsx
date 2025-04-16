@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 export default function Home() {
   const [movies, setMovies] = useState([])
@@ -28,9 +29,11 @@ export default function Home() {
                 movies.map((movie) => (
                   <div key={movie.id} className="col">
                     <div className="card">
+                      <Link to={`/${movie.id}`}>
                       <img src={movie.image} alt={movie.title} />
                       <h3>{movie.title}</h3>
                       <p>{movie.release_year}</p>
+                      </Link>
                     </div>
                   </div>
                 ))
