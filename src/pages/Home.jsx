@@ -40,7 +40,7 @@ export default function Home() {
                   <div className="card">
                     <Link to={`/${movie.id}`}>
                       <div className="card-body">
-                        <img src={`http://localhost:3004/cover_image/${movie.title.toLowerCase()}.jpg`} alt={movie.title} />
+                        <img src={`http://localhost:3004/cover_image/${movie.image}`} alt={movie.title} />
                         <h3>{movie.title}</h3>
                         <p>{movie.release_year}</p>
                       </div>

@@ -20,7 +20,7 @@ export default function movieObj() {
       {movie ? (
         <>
           <h1>{movie.title}</h1>
-          <img src={movie.image} alt={movie.title} />
+          <img src={`http://localhost:3004/cover_image/${movie.image}`} alt={movie.title} />
           <p>{movie.release_year}</p>
           <p>{movie.description}</p>
         </>
