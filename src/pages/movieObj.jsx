@@ -30,8 +30,8 @@ export default function movieObj() {
               </p>
             </div>
 
-            <div className="col-4">
-              <img src={`http://localhost:3004/cover_image/${movie?.image}`} alt={movie?.title} className="img-fluid rounded" style={{ height: '300px' }} />
+            <div className="col-4">}
+              <img   src={movie?.image ? `http://localhost:3004/cover_image/${movie.image}` : "https://placehold.co/600x400"} alt={movie?.title} className="img-fluid rounded" style={{ height: '300px' }} />
             </div>
           </div>
 
@@ -92,7 +92,7 @@ export default function movieObj() {
           <div>
 
             {movie.reviews.map(review => (
-              <MovieReviewCard key={review?.id} userReview={review} />
+              <MovieReviewCard key={review.id} userReview={review} />
             ))}
           </div>
         ) : (
