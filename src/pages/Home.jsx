@@ -46,9 +46,7 @@ export default function Home() {
 
 
               movies.map((movie) => (
-                <div key={movie.id} className="col">
-                  <MovieCard movie={movie} />
-                </div>
+                <MovieCard key={movie.id} movie={movie} />
               ))
 
             ) : (
