@@ -41,6 +41,7 @@ export default function MovieReviewForm({ movieId }) {
       console.log('Form is not valid', formErrors);
       return
     }
+    console.log('Form is valid', formData);
 
     fetch(api_url, {
       method: 'POST',
@@ -58,7 +59,6 @@ export default function MovieReviewForm({ movieId }) {
       .catch((err) => console.error('Error submitting form:', err))
   }
 
-  console.log('Form is valid', formData);
 
 
 
