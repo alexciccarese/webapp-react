@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import MovieCard from "../components/MovieCard"
 
 export default function Home() {
   const [movies, setMovies] = useState([])
@@ -31,7 +31,7 @@ export default function Home() {
         <div className="container py-5">
           <h1 className="display-5 fw-bold">Movies reviews</h1>
           <p className="col-md-8 fs-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, sit neque ad repudiandae incidunt dolor inventore 
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, sit neque ad repudiandae incidunt dolor inventore
             illum soluta, obcaecati deleniti id pariatur cumque, minima quos aliquam voluptatum iste libero.
           </p>
         </div>
@@ -47,15 +47,7 @@ export default function Home() {
 
               movies.map((movie) => (
                 <div key={movie.id} className="col">
-                  <div className="card h-100">
-                    <Link to={`/${movie.id}`}>
-                        <img src={`http://localhost:3004/cover_image/${movie.image}`} alt={movie.title} className="card-img-top" />
-                    </Link>
-                      <div className="card-body ">
-                        <h3>{movie.title}</h3>
-                        <p>{movie.release_year}</p>
-                      </div>
-                  </div>
+                  <MovieCard movie={movie} />
                 </div>
               ))
 
