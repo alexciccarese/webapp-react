@@ -2,6 +2,23 @@ export default function MovieReviewCard({ userReview }) {
 
   const { text, vote, name, created_at } = userReview
 
+
+  function rating(vote) {
+
+    const stars = []
+    const empty = []
+
+    for (let i = 0; i < vote; i++) {
+      stars.push(<i key={i} className="bi bi-star-fill"></i>)
+    }
+
+    for (let i = 0; i < 5 - vote; i++) {
+      empty.push(<i key={i} className="bi bi-star"></i>)
+    }
+
+    return [...stars, ...empty]
+  }
+
   return (
 
     <>
@@ -9,7 +26,7 @@ export default function MovieReviewCard({ userReview }) {
 
         <div className="card-header d-flex justify-content-between align-items-center">
           <h3>{text}</h3>
-          <div className="vote">{vote}</div>
+          <div className="vote">{rating(vote)}</div>
         </div>
 
         <div className="card-body">
