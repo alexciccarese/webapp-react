@@ -39,7 +39,7 @@ export default function Home() {
 
       <section className="movies">
         <div className="container">
-          <h1>Home page</h1>
+
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
             {movies.length > 0 ? (
@@ -49,12 +49,12 @@ export default function Home() {
                 <div key={movie.id} className="col">
                   <div className="card h-100">
                     <Link to={`/${movie.id}`}>
-                      <div className="card-body">
-                        <img src={`http://localhost:3004/cover_image/${movie.image}`} alt={movie.title} />
+                        <img src={`http://localhost:3004/cover_image/${movie.image}`} alt={movie.title} className="card-img-top" />
+                    </Link>
+                      <div className="card-body ">
                         <h3>{movie.title}</h3>
                         <p>{movie.release_year}</p>
                       </div>
-                    </Link>
                   </div>
                 </div>
               ))
