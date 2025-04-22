@@ -27,9 +27,19 @@ export default function Home() {
 
     <>
 
+      <div className="p-5 mb-4 bg-light rounded-3">
+        <div className="container py-5">
+          <h1 className="display-5 fw-bold">Movies reviews</h1>
+          <p className="col-md-8 fs-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, sit neque ad repudiandae incidunt dolor inventore 
+            illum soluta, obcaecati deleniti id pariatur cumque, minima quos aliquam voluptatum iste libero.
+          </p>
+        </div>
+      </div>
+
       <section className="movies">
         <div className="container">
-      <h1>Home page</h1>
+          <h1>Home page</h1>
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
             {movies.length > 0 ? (
@@ -56,6 +66,7 @@ export default function Home() {
           </div>
         </div>
       </section >
+
     </>
   )
 }
