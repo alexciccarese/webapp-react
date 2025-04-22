@@ -45,6 +45,11 @@ export default function movieObj() {
               <div className="card-body">
                 {review?.text}
               </div>
+
+              <div className="card-footer">
+                {review?.name}
+                <div className="created-at">created at: {review?.created_at}</div>
+              </div>
             </div>
           ))}
         </div>
