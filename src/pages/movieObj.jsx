@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams,useNavigate } from "react-router-dom"
 import MovieReviewCard from "../components/movieReviewCard"
+import MovieReviewForm from "../components/reviews/MovieReviewForm"
 
 export default function movieObj() {
   const { id } = useParams()
@@ -46,47 +47,7 @@ export default function movieObj() {
 
       <div className="container">
 
-        <div className="add-review">
-          <h3 className="mb-3">Add your review</h3>
-          <form action="POST" className="mb-3">
-
-            <div className="mb-3">
-              <label htmlFor="name" className="form-label">Name</label>
-              <input
-                type="text"
-                className="form-control"
-                name="name"
-                id="name"
-                placeholder="anonymous"
-              />
-            </div>
-
-
-            <div className="mb-3">
-              <label htmlFor="vote" className="form-label">Vote</label>
-              <input
-                type="number"
-                className="form-control"
-                name="vote"
-                id="vote"
-                min={1}
-                max={5}
-                aria-describedby="helpId"
-                placeholder="1"
-              />
-            </div>
-
-
-            <div className="mb-3">
-              <label htmlFor="review" className="form-label">Review</label>
-              <textarea name="review" className="form-control" rows="3" placeholder="Write your review here"></textarea>
-            </div>
-
-            <div className="bm-3">
-              <button type="submit" className="btn btn-primary mt-2">Submit review</button>
-            </div>
-
-          </form>
+        <MovieReviewForm movieId={id} />
         </div>
 
         <hr />
@@ -103,7 +64,6 @@ export default function movieObj() {
         ) : (
           <p>No reviews yet!</p>
         )}
-      </div>
 
 
     </>
