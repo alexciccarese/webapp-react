@@ -47,7 +47,7 @@ export default function Home() {
 
               movies.map((movie) => (
                 <div key={movie.id} className="col">
-                  <div className="card">
+                  <div className="card h-100">
                     <Link to={`/${movie.id}`}>
                       <div className="card-body">
                         <img src={`http://localhost:3004/cover_image/${movie.image}`} alt={movie.title} />
