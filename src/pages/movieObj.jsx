@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import MovieReviewcard from "../components/MovieReviewCard"
 
 export default function movieObj() {
   const { id } = useParams()
@@ -29,33 +30,19 @@ export default function movieObj() {
         </div>
       </div>
 
+      <div className="container">
+        {movie?.reviews && movie.reviews.length > 0 ? (
+          <div>
+            <h2>Reviews</h2>
 
-      {movie?.reviews && movie.reviews.length > 0 ? (
-        <div>
-          <h2>Reviews</h2>
-          
-          {movie.reviews.map(review => (
-            <div className="card" key={review.id}>
-
-              <div className="card-header d-flex justify-content-between align-items-center">
-                <h3>{review?.text}</h3>
-                <div className="vote">{review?.vote}</div>
-              </div>
-
-              <div className="card-body">
-                {review?.text}
-              </div>
-
-              <div className="card-footer">
-                {review?.name}
-                <div className="created-at">created at: {review?.created_at}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p>No reviews yet!</p>
-      )}
+            {movie.reviews.map(review => (
+              <MovieReviewcard key={review?.id} userReview={review} />
+            ))}
+          </div>
+        ) : (
+          <p>No reviews yet!</p>
+        )}
+      </div>
 
 
     </>
