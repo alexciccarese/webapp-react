@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams,useNavigate } from "react-router-dom"
 import MovieReviewCard from "../components/movieReviewCard"
 
 export default function movieObj() {
   const { id } = useParams()
   const [movie, setMovie] = useState(null)
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     fetch(`http://localhost:3004/api/movies/` + id)
       .then(res => res.json())
       .then(data => {
         console.log(data)
+        if (data?.error) {
+          navigate('/404')
+        }
         setMovie(data)
       })
       .catch((err) => console.error('Error fetching movie:', err))
@@ -30,7 +35,7 @@ export default function movieObj() {
               </p>
             </div>
 
-            <div className="col-4">}
+            <div className="col-4">
               <img   src={movie?.image ? `http://localhost:3004/cover_image/${movie.image}` : "https://placehold.co/600x400"} alt={movie?.title} className="img-fluid rounded" style={{ height: '300px' }} />
             </div>
           </div>
