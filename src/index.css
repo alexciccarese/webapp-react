@@ -10,3 +10,14 @@
 img {
   max-width: 100%;
 }
+
+.movies {
+
+  .card {
+    img {
+      
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+  }
+}
