@@ -20,7 +20,7 @@ export default function SingleMoviePage() {
         setMovie(data)
       })
       .catch((err) => console.error('Error fetching movie:', err))
-  }, [id])
+  }, [movie])
 
   return (
 

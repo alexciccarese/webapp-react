@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function MovieReviewForm({ movieId }) {
 
 
   const api_url = 'http://localhost:3004/api/movies/' + movieId + '/reviews'
+  const navigate = useNavigate()
 
   const initialFormData = {
     name: 'anonymous',
@@ -13,6 +15,7 @@ export default function MovieReviewForm({ movieId }) {
 
   const [formData, setFormData] = useState(initialFormData)
   const [formErrors, setFormErrors] = useState({})
+  const [success, setSuccess] = useState(false)
 
   function isFormValid(data) {
     const errors = {}
@@ -34,26 +37,35 @@ export default function MovieReviewForm({ movieId }) {
   }
 
   function handleFormSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    //validation form
+    // Validazione del modulo
     if (!isFormValid(formData)) {
-      return
+      return;
     }
 
     fetch(api_url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     })
-      .then(res => res.json())
-      .then(data => {
-        setFormData(initialFormData)
+      .then((res) => res.json())
+      .then((data) => {
+        setFormData(initialFormData);
+        if (data?.message) {
+          setSuccess(data.message)
+
+          setTimeout(() => {
+            setSuccess(false)
+            navigate(0)
+
+          }, 2000);
+        }
       })
-      .catch((err) => console.error('Error submitting form:', err))
+      .catch((err) => console.error('Error submitting form:', err));
   }
 
 
@@ -75,6 +87,12 @@ export default function MovieReviewForm({ movieId }) {
                 <li key={key}>{formErrors[key]}</li>
               ))}
             </ul>
+          </div>
+        )}
+
+        {success && (
+          <div className="alert alert-success" role="alert">
+            {success}
           </div>
         )}
 
