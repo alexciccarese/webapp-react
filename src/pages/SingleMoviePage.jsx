@@ -13,7 +13,7 @@ export default function SingleMoviePage() {
     fetch(`http://localhost:3004/api/movies/` + id)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+
         if (data?.error) {
           navigate('/404')
         }
