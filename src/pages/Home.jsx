@@ -1,26 +1,25 @@
 import { useState, useEffect } from "react"
 import MovieCard from "../components/MovieCard"
+import GlobalContext from "../context/GlobalContext"
+import { useContext } from "react"
 
 export default function Home() {
   const [movies, setMovies] = useState([])
+  const { setIsLoading } = useContext(GlobalContext)
 
   useEffect(() => {
+    setIsLoading(true)
+
     fetch('http://localhost:3004/api/movies')
       .then(res => res.json())
       .then(data => {
         setMovies(data)
+        console.log(data);
+      
+        setIsLoading(false)
       })
       .catch((err) => console.error('Error fetching movies:', err))
   }, [])
-
-
-  const imageMap = {
-    'The Matrix': 'matrix.jpg',
-    'Inception': 'inception.jpg',
-    'Interstellar': 'interstellar.jpg',
-    'The good father': 'the_goodfather.jpg',
-    'titanic': 'titanic.jpg',
-  }
 
   return (
 

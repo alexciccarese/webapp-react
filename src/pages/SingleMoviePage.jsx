@@ -2,14 +2,20 @@ import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import MovieReviewForm from "../components/reviews/MovieReviewForm"
 import MovieReviewCard from "../components/MovieReviewCard"
+import { useContext } from "react"
+import GlobalContext from "../context/GlobalContext"
 
 export default function SingleMoviePage() {
+
+  const { setIsLoading } = useContext(GlobalContext)
+
   const { id } = useParams()
   const [movie, setMovie] = useState(null)
 
   const navigate = useNavigate()
 
   useEffect(() => {
+    setIsLoading(true)
     
     fetch(`http://localhost:3004/api/movies/` + id)
       .then(res => res.json())
@@ -19,6 +25,8 @@ export default function SingleMoviePage() {
           navigate('/404')
         }
         setMovie(data)
+
+        setIsLoading(false)
       })
       .catch((err) => console.error('Error fetching movie:', err))
   }, [id])
