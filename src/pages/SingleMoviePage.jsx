@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { useParams,useNavigate } from "react-router-dom"
-import MovieReviewCard from "../components/movieReviewCard"
+import { useParams, useNavigate } from "react-router-dom"
 import MovieReviewForm from "../components/reviews/MovieReviewForm"
+import MovieReviewCard from "../components/MovieReviewCard"
 
-export default function movieObj() {
+export default function SingleMoviePage() {
   const { id } = useParams()
   const [movie, setMovie] = useState(null)
 
@@ -37,7 +37,7 @@ export default function movieObj() {
             </div>
 
             <div className="col-4">
-              <img   src={movie?.image ? `http://localhost:3004/cover_image/${movie.image}` : "https://placehold.co/600x400"} alt={movie?.title} className="img-fluid rounded" style={{ height: '300px' }} />
+              <img src={movie?.image ? `http://localhost:3004/cover_image/${movie.image}` : "https://placehold.co/600x400"} alt={movie?.title} className="img-fluid rounded" style={{ height: '300px' }} />
             </div>
           </div>
 
@@ -48,22 +48,22 @@ export default function movieObj() {
       <div className="container">
 
         <MovieReviewForm movieId={id} />
+      </div>
+
+      <hr />
+
+
+
+      {movie?.reviews && movie.reviews.length > 0 ? (
+        <div>
+
+          {movie.reviews.map(review => (
+            <MovieReviewCard key={review.id} userReview={review} />
+          ))}
         </div>
-
-        <hr />
-
-
-        <h3 className="mb-3">Reviews</h3>
-        {movie?.reviews && movie.reviews.length > 0 ? (
-          <div>
-
-            {movie.reviews.map(review => (
-              <MovieReviewCard key={review.id} userReview={review} />
-            ))}
-          </div>
-        ) : (
-          <p>No reviews yet!</p>
-        )}
+      ) : (
+        <p>No reviews yet!</p>
+      )}
 
 
     </>

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import DefaultLayout from "./layouts/DefaultLayout"
 import Home from "./pages/Home"
-import movieObj from "./pages/movieObj"
+import SingleMoviePage from "./pages/SingleMoviePage"
 import NotFound from "./pages/NotFound"
 
 export default function App() {
@@ -12,7 +12,7 @@ export default function App() {
           <Route Component={DefaultLayout}>
 
             <Route path="/" Component={Home} />
-            <Route path="/:id" Component={movieObj} />
+            <Route path="/:id" Component={SingleMoviePage} />
 
             <Route path="/*" Component={NotFound} />
 

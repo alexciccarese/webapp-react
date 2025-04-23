@@ -68,7 +68,7 @@ export default function MovieReviewForm({ movieId }) {
   return (
 
     <>
-      <div className="add-review">
+      <div className="add-review mb-5">
         <h3 className="mb-3">Add your review</h3>
 
         {Object.keys(formErrors).length > 0 && (

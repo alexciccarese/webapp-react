@@ -31,8 +31,7 @@ export default function Home() {
         <div className="container py-5">
           <h1 className="display-5 fw-bold">Movies reviews</h1>
           <p className="col-md-8 fs-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, sit neque ad repudiandae incidunt dolor inventore
-            illum soluta, obcaecati deleniti id pariatur cumque, minima quos aliquam voluptatum iste libero.
+            Explore our collection of iconic movies and their reviews. From timeless classics to modern masterpieces, dive into the world of cinema and discover what makes these films unforgettable.
           </p>
         </div>
       </div>
