@@ -10,6 +10,7 @@ export default function SingleMoviePage() {
   const navigate = useNavigate()
 
   useEffect(() => {
+    
     fetch(`http://localhost:3004/api/movies/` + id)
       .then(res => res.json())
       .then(data => {
@@ -20,7 +21,7 @@ export default function SingleMoviePage() {
         setMovie(data)
       })
       .catch((err) => console.error('Error fetching movie:', err))
-  }, [movie])
+  }, [id])
 
   return (
 
